@@ -1,9 +1,26 @@
 import dpsLogo from './assets/DPS.svg';
 import './App.css';
+import { useEffect, useState } from 'react';
 
 // https://dummyjson.com/users
 
-function App() {
+function App(): JSX.Element {
+	const [users, setUsers] = useState([]);
+
+	async function fetchData() {
+		const response = await fetch('https://dummyjson.com/users');
+		const userData = await response.json();
+		// console.log('success', userData.users);
+		return userData.users;
+	}
+
+	useEffect(() => {
+		fetchData().then((users) => {
+			console.log('useEffect', users);
+			setUsers(users);
+		});
+	}, []);
+
 	return (
 		<>
 			<div>
@@ -12,7 +29,14 @@ function App() {
 				</a>
 			</div>
 			<div className="home-card">
-				<p>Your solution goes here 😊</p>
+				<ul>
+					{users.map((user) => (
+						<li key={user.id}>
+							{user.firstName} {user.lastName} {user.address.city}{' '}
+							{user.birthDate}
+						</li>
+					))}
+				</ul>
 			</div>
 		</>
 	);
