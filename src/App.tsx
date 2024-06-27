@@ -1,44 +1,40 @@
 import dpsLogo from './assets/DPS.svg';
-import './App.css';
 import { useEffect, useState } from 'react';
+import { RenderClients } from './components/RenderClients';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import './App.css';
 
 // https://dummyjson.com/users
 
 function App(): JSX.Element {
-	const [users, setUsers] = useState([]);
+	const [customers, setCustomers] = useState([]);
 
 	async function fetchData() {
 		const response = await fetch('https://dummyjson.com/users');
-		const userData = await response.json();
+		const customerData = await response.json();
 		// console.log('success', userData.users);
-		return userData.users;
+		return customerData.users;
 	}
 
 	useEffect(() => {
-		fetchData().then((users) => {
-			console.log('useEffect', users);
-			setUsers(users);
+		fetchData().then((customerData) => {
+			console.log('useEffect', customerData);
+			setCustomers(customerData);
 		});
 	}, []);
 
 	return (
-		<>
-			<div>
-				<a href="https://www.digitalproductschool.io/" target="_blank">
-					<img src={dpsLogo} className="logo" alt="DPS logo" />
-				</a>
+		<div className="border rounded">
+			<div className="input-fields">
+				<input size={5} className="input" />
+				<select className="input"></select>
+				<label>
+					Highlight oldest per city: <input type="checkbox" />
+				</label>
 			</div>
-			<div className="home-card">
-				<ul>
-					{users.map((user) => (
-						<li key={user.id}>
-							{user.firstName} {user.lastName} {user.address.city}{' '}
-							{user.birthDate}
-						</li>
-					))}
-				</ul>
-			</div>
-		</>
+
+			<RenderClients clients={customers} />
+		</div>
 	);
 }
 

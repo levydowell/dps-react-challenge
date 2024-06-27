@@ -37,9 +37,24 @@
 	padding: 2em;
 }
 
+.main-border {
+	width: 100%;
+}
+
+.input-fields {
+	display: flex;
+	flex-direction: row;
+	align-content: space-between;
+	gap: 0.5rem;
+}
+
+.name-input {
+	height: 10%;
+}
+
 .home-card {
 	display: flex;
-	flex-direction: column;
+	flex-direction: row;
 	gap: 0.5rem;
 }
 
