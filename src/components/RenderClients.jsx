@@ -1,6 +1,7 @@
 
 
 export const RenderClients = ({ clients }) => {
+  console.log('clients received', clients);
   return (
     <div className="home-card">
     <ul>
