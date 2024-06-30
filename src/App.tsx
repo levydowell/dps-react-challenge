@@ -8,6 +8,7 @@ import './App.css';
 function App(): JSX.Element {
 	const [customers, setCustomers] = useState([]);
 	const [nameSearch, setNameSearch] = useState('');
+	const [city, setCity] = useState([]);
 
 	async function fetchData() {
 		const response = await fetch('https://dummyjson.com/users');
@@ -25,6 +26,10 @@ function App(): JSX.Element {
 		setNameSearch(event.target.value);
 	};
 
+	const handleCitySearch = (event) => {
+		setCity(event.target.value);
+	};
+
 	const filterNames = customers.filter((customer) => {
 		return (
 			customer.firstName
@@ -37,12 +42,31 @@ function App(): JSX.Element {
 	return (
 		<div className="border rounded">
 			<div className="input-fields">
-				<input
-					className="input"
-					value={nameSearch}
-					onChange={handleNameSearch}
-				/>
-				<select className="input"></select>
+				<label>
+					Name
+					<input
+						className="input"
+						value={nameSearch}
+						onChange={handleNameSearch}
+					/>
+				</label>
+
+				<label>
+					City
+					<select
+						className="input"
+						value={city}
+						onChange={handleCitySearch}
+					>
+						<option value={''}></option>
+						{customers.map((customer) => (
+							<option key={customer.id}>
+								{customer.address.city}
+							</option>
+						))}
+					</select>
+				</label>
+
 				<label>
 					Highlight oldest per city: <input type="checkbox" />
 				</label>
@@ -50,6 +74,7 @@ function App(): JSX.Element {
 
 			<RenderClients
 				clients={nameSearch === '' ? customers : filterNames}
+				city={city}
 			/>
 		</div>
 	);

@@ -46,6 +46,7 @@
 	flex-direction: row;
 	align-content: space-between;
 	gap: 0.5rem;
+	margin: 5%;
 }
 
 .name-input {
@@ -54,10 +55,16 @@
 
 .home-card {
 	display: flex;
-	flex-direction: row;
+	flex-direction: column;
+	justify-content: space-between;
 	gap: 0.5rem;
+	margin: 5%;
 }
 
+.customer {
+	display: flex;
+	justify-content: space-between;
+}
 .read-the-docs {
 	color: #888;
 }
