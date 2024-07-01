@@ -5,19 +5,6 @@
 	text-align: center;
 }
 
-.logo {
-	height: 6em;
-	padding: 1.5em;
-	will-change: filter;
-	transition: filter 300ms;
-}
-.logo:hover {
-	filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-	filter: drop-shadow(0 0 2em #61dafbaa);
-}
-
 @keyframes logo-spin {
 	from {
 		transform: rotate(0deg);
@@ -49,8 +36,11 @@
 	margin: 5%;
 }
 
-.name-input {
-	height: 10%;
+.input {
+	background-color: white;
+	color: black;
+	cursor: pointer;
+	border: 2px solid black;
 }
 
 .home-card {
@@ -64,6 +54,10 @@
 .customer {
 	display: flex;
 	justify-content: space-between;
+}
+
+.highlight-customer {
+	border: 1px solid black;
 }
 .read-the-docs {
 	color: #888;

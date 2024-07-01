@@ -8,7 +8,8 @@ import './App.css';
 function App(): JSX.Element {
 	const [customers, setCustomers] = useState([]);
 	const [nameSearch, setNameSearch] = useState('');
-	const [city, setCity] = useState([]);
+	const [city, setCity] = useState('');
+	const [isChecked, setIsChecked] = useState(false);
 
 	async function fetchData() {
 		const response = await fetch('https://dummyjson.com/users');
@@ -28,6 +29,11 @@ function App(): JSX.Element {
 
 	const handleCitySearch = (event) => {
 		setCity(event.target.value);
+	};
+
+	const handleCheck = (event) => {
+		setIsChecked(event.target.checked);
+		console.log('local checked', isChecked);
 	};
 
 	const filterNames = customers.filter((customer) => {
@@ -68,13 +74,20 @@ function App(): JSX.Element {
 				</label>
 
 				<label>
-					Highlight oldest per city: <input type="checkbox" />
+					Highlight oldest per city:
+					<input
+						className="input"
+						type="checkbox"
+						checked={isChecked}
+						onChange={handleCheck}
+					/>
 				</label>
 			</div>
 
 			<RenderClients
 				clients={nameSearch === '' ? customers : filterNames}
 				city={city}
+				checked={isChecked}
 			/>
 		</div>
 	);
