@@ -20,14 +20,46 @@
 	}
 }
 
+h5 {
+	font-family: 'Patrick Hand', cursive;
+	font-weight: bold;
+	font-style: normal;
+}
+
 .card {
 	padding: 2em;
 }
 
-.main-border {
+.outside-border {
 	width: 100%;
+	border: 2px solid black;
+	border-radius: 20px;
 }
 
+/* Styling for RenderClients component's top level element */
+.home-card {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+
+	gap: 0.5rem;
+	margin: 5%;
+
+	border: 2px solid black;
+	border-radius: 20px;
+}
+
+.labels {
+	text-align: left;
+}
+
+/* Labels for user input fields */
+.checkbox-label {
+	display: flex;
+	align-items: center;
+}
+
+/* Styles the user input fields container*/
 .input-fields {
 	display: flex;
 	flex-direction: row;
@@ -36,6 +68,7 @@
 	margin: 5%;
 }
 
+/* Styles for each individual input field */
 .input {
 	background-color: white;
 	color: black;
@@ -43,22 +76,37 @@
 	border: 2px solid black;
 }
 
-.home-card {
+/* Styles for Name, City, Birthday header */
+.customer-header {
 	display: flex;
-	flex-direction: column;
 	justify-content: space-between;
-	gap: 0.5rem;
-	margin: 5%;
+	text-align: left;
+	margin: 3%;
 }
 
+hr {
+	margin: 0;
+	border: none;
+	height: 2px;
+	background-color: black !important;
+}
+
+/* Styles for each individual customer field from RenderClients component*/
 .customer {
 	display: flex;
 	justify-content: space-between;
+	text-align: left;
+	margin: 3%;
 }
 
-.highlight-customer {
-	border: 1px solid black;
+/* Sets consistant width for individual fields within customer field to enable left text align */
+.field {
+	width: 33%;
 }
-.read-the-docs {
-	color: #888;
+
+/* Styles for highlight by oldest functionality*/
+.highlight-customer {
+	border: 2px solid rgb(98, 136, 202);
+	background-color: rgb(128, 182, 224);
+	border-radius: 10px;
 }
